@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.zalopay.bankconnector"
+    },
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "microservice",
+    "baseName": "connector",
+    "packageName": "com.zalopay.bankconnector",
+    "packageFolder": "com/zalopay/bankconnector",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "no",
+    "devDatabaseType": "no",
+    "prodDatabaseType": "no",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "Y2U0OTU0MmYyOGM2YjkyOTdjNDg5OGI3NDVhY2I1YmYyYzJjNzg4YWI2YzBjZjQzOTQyZjhkNjE0Y2ZjM2RhMzA0NDA5ODhiNzJjMDRmMjFmNDgxY2M0OWMzYzk3NzZhMzA3Y2E5ZmUwYTRhZDFkY2ViNDA5OTM2MGE5MWYxMGI=",
+    "embeddableLaunchScript": false,
+    "testFrameworks": [
+      "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
