@@ -5,16 +5,14 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.base.Strings;
 import com.zalopay.bankconnector.config.SBISConfigEntity;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.request.InvokePaymentBankConnectorRequest;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-import zalopay.bankconnector.bank.selector.BankMIDSelector;
-import zalopay.bankconnector.entity.ActionResult;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorRequest;
 
 /**
  *

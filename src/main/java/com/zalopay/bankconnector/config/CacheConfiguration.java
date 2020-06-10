@@ -55,13 +55,13 @@ public class CacheConfiguration implements DisposableBean {
         config.getNetworkConfig().setPortAutoIncrement(true);
 
         // In development, remove multicast auto-configuration
-        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
-            System.setProperty("hazelcast.local.localAddress", "127.0.0.1");
-
-            config.getNetworkConfig().getJoin().getAwsConfig().setEnabled(false);
-            config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
-            config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
-        }
+//        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
+//            System.setProperty("hazelcast.local.localAddress", "127.0.0.1");
+//
+//            config.getNetworkConfig().getJoin().getAwsConfig().setEnabled(false);
+//            config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
+//            config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
+//        }
         config.getMapConfigs().put("default", initializeDefaultMapConfig(jHipsterProperties));
 
         // Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html

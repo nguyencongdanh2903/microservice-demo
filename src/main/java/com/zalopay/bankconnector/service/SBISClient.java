@@ -20,12 +20,11 @@ import com.zalopay.bankconnector.config.SBISConfigEntity;
 import com.zalopay.bankconnector.constant.ApiNameConst;
 import com.zalopay.bankconnector.constant.BankRequestParams;
 import com.zalopay.bankconnector.service.request.DefaultRequest;
+import com.zalopay.bankconnector.service.request.ZP2BankBaseRequest;
 import com.zalopay.bankconnector.service.response.DefaultResponse;
+import com.zalopay.bankconnector.service.response.ZP2BankBaseResponse;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
 
-import zalopay.bankconnector.bank.client.BankClient;
-import zalopay.bankconnector.bank.entity.ZP2BankBaseRequest;
-import zalopay.bankconnector.bank.entity.ZP2BankBaseResponse;
-import zalopay.bankconnector.entity.ActionResult;
 import zalopay.bankconnector.enums.ReturnCodeEnum;
 import zalopay.bankconnector.enums.SubTransTypeEnum;
 import zalopay.bankconnector.util.ExceptionUtil;

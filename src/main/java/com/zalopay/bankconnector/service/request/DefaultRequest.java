@@ -5,7 +5,6 @@
  */
 package com.zalopay.bankconnector.service.request;
 
-import zalopay.bankconnector.bank.entity.ZP2BankBaseRequest;
 import zalopay.bankconnector.util.BankConnectorLogger;
 import zalopay.bankconnector.util.CloneUtils;
 

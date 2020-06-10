@@ -6,27 +6,17 @@ import com.google.common.base.Strings;
 import com.zalopay.bankconnector.service.request.DefaultRequest;
 import com.zalopay.bankconnector.service.request.InquiryCardRequestData;
 import com.zalopay.bankconnector.service.response.DefaultResponse;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.request.InvokePaymentBankConnectorRequest;
+import com.zalopay.bankconnector.web.rest.vm.response.InvokePaymentBankConnectorResponse;
 
-import zalopay.bankconnector.bank.converter.ZP2BankMessageConverter;
 import zalopay.bankconnector.constant.ApiParamsConst;
 import zalopay.bankconnector.constant.CoreApiNameConst;
-import zalopay.bankconnector.entity.ActionResult;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorRequest;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorResponse;
 import zalopay.bankconnector.enums.BankTransStatusEnum;
 import zalopay.bankconnector.enums.NextActionEnum;
 import zalopay.bankconnector.enums.ReturnCodeEnum;
 
 public class InquiryCardMessageConverter extends ZP2BankCoreMessageConverter {
-	private static InquiryCardMessageConverter INSTANCE = new InquiryCardMessageConverter();
-
-	private InquiryCardMessageConverter() {
-
-	}
-
-	public static ZP2BankMessageConverter getInstance() {
-		return INSTANCE;
-	}
 
 	@Override
 	protected void convertAdditionalRequestInfos(InvokePaymentBankConnectorRequest source, DefaultRequest data,

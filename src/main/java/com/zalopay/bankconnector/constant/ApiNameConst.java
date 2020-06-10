@@ -5,7 +5,8 @@
  */
 package com.zalopay.bankconnector.constant;
 
-import zalopay.bankconnector.entity.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+
 import zalopay.bankconnector.enums.SubTransTypeEnum;
 
 /**

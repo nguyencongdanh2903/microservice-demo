@@ -19,29 +19,28 @@ import com.zalopay.bankconnector.service.request.UnLinkRequestData;
 import com.zalopay.bankconnector.service.request.VerifyOTPRequestData;
 import com.zalopay.bankconnector.service.request.WithdrawByCardRequestData;
 import com.zalopay.bankconnector.service.request.WithdrawByTokenRequestData;
+import com.zalopay.bankconnector.service.request.ZP2BankBaseRequest;
 import com.zalopay.bankconnector.service.response.DefaultResponse;
 import com.zalopay.bankconnector.service.response.DefaultResponseData;
+import com.zalopay.bankconnector.service.response.ZP2BankBaseResponse;
+import com.zalopay.bankconnector.service.utils.CardUtil;
+import com.zalopay.bankconnector.service.utils.HashUtil;
+import com.zalopay.bankconnector.service.utils.MappingCodeUtil;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.request.InvokePaymentBankConnectorRequest;
+import com.zalopay.bankconnector.web.rest.vm.response.InvokePaymentBankConnectorResponse;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import zalopay.bankconnector.bank.converter.ZP2BankMessageConverter;
-import zalopay.bankconnector.bank.entity.ZP2BankBaseRequest;
-import zalopay.bankconnector.bank.entity.ZP2BankBaseResponse;
-import zalopay.bankconnector.config.MappingCodeUtil;
 import zalopay.bankconnector.constant.ApiParamsConst;
 import zalopay.bankconnector.constant.CoreApiNameConst;
-import zalopay.bankconnector.entity.ActionResult;
 import zalopay.bankconnector.entity.ReturnCodeMappingEntity;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorRequest;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorResponse;
 import zalopay.bankconnector.enums.BankTransStatusEnum;
 import zalopay.bankconnector.enums.NextActionEnum;
 import zalopay.bankconnector.enums.ReturnCodeEnum;
 import zalopay.bankconnector.enums.SubTransTypeEnum;
-import zalopay.bankconnector.util.CardUtil;
 import zalopay.bankconnector.util.ExceptionUtil;
-import zalopay.bankconnector.util.HashUtil;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
@@ -49,10 +48,10 @@ public abstract class ZP2BankCoreMessageConverter implements ZP2BankMessageConve
 
 	@Autowired
 	private SBISConfigEntity sbisConfig;
-	
+
 	@Autowired
 	private BankConnConfig bankConn;
-	
+
 	@Autowired
 	private SBISDbConfig sbisDbConfig;
 	private static final Logger LOGGER = Logger.getLogger(ZP2BankCoreMessageConverter.class);
@@ -170,9 +169,8 @@ public abstract class ZP2BankCoreMessageConverter implements ZP2BankMessageConve
 
 			target.dataObj.bankReturnCode = bankResponse.errorCode;
 
-			ReturnCodeMappingEntity returnCodeMapping = MappingCodeUtil.mapBankToGatewayCode(
-					bankConn.connSystemName, sbisConfig.bankCode, 9999,
-					bankResponse.errorCode, sbisDbConfig.bankToZPMapCodes);
+			ReturnCodeMappingEntity returnCodeMapping = MappingCodeUtil.mapBankToGatewayCode(bankConn.connSystemName,
+					sbisConfig.bankCode, 9999, bankResponse.errorCode, sbisDbConfig.bankToZPMapCodes);
 
 			int returnCode = returnCodeMapping.returnCode;
 
@@ -251,8 +249,8 @@ public abstract class ZP2BankCoreMessageConverter implements ZP2BankMessageConve
 			rawData.append(request.requestID).append("|").append(request.clientCode).append("|")
 					.append(request.clientUserID).append("|").append(request.time).append("|").append(request.data);
 
-			request.signature = ClientUtils.generateSigData(rawData.toString(), sbisConfig.secretKey,
-					actionResult, bankConn.connHashAlg);
+			request.signature = ClientUtils.generateSigData(rawData.toString(), sbisConfig.secretKey, actionResult,
+					bankConn.connHashAlg);
 
 			return request.signature;
 
@@ -273,8 +271,8 @@ public abstract class ZP2BankCoreMessageConverter implements ZP2BankMessageConve
 					.append("|").append(response.operation).append("|").append(response.code).append("|")
 					.append(response.data).append(sbisConfig.secretKey);
 
-			boolean isSignature = ClientUtils.verify(rawData.toString(), response.signature,
-					sbisConfig.publicKey, actionResult);
+			boolean isSignature = ClientUtils.verify(rawData.toString(), response.signature, sbisConfig.publicKey,
+					actionResult);
 			if (actionResult.returnCode != ReturnCodeEnum.SUCCESSFUL.getValue()) {
 				actionResult.returnMessage = "Fail to create signature from Bank' response";
 				actionResult.extraInfo = String.format("[Bank response = %s ]", response.toJsonString());

@@ -6,12 +6,12 @@ import com.google.common.base.Strings;
 import com.zalopay.bankconnector.service.request.DefaultRequest;
 import com.zalopay.bankconnector.service.request.RefundRequestData;
 import com.zalopay.bankconnector.service.response.DefaultResponse;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.request.InvokePaymentBankConnectorRequest;
+import com.zalopay.bankconnector.web.rest.vm.response.InvokePaymentBankConnectorResponse;
 
 import zalopay.bankconnector.constant.ApiParamsConst;
 import zalopay.bankconnector.constant.CoreApiNameConst;
-import zalopay.bankconnector.entity.ActionResult;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorRequest;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorResponse;
 import zalopay.bankconnector.enums.BankTransStatusEnum;
 import zalopay.bankconnector.enums.NextActionEnum;
 import zalopay.bankconnector.enums.ReturnCodeEnum;

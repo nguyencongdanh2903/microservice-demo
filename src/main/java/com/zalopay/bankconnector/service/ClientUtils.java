@@ -32,8 +32,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 
 import com.zalopay.bankconnector.service.converter.ZP2BankCoreMessageConverter;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
 
-import zalopay.bankconnector.entity.ActionResult;
 import zalopay.bankconnector.enums.ReturnCodeEnum;
 import zalopay.bankconnector.util.ExceptionUtil;
 import zalopay.bankconnector.util.GsonUtils;

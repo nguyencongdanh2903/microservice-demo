@@ -5,27 +5,17 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import com.zalopay.bankconnector.service.request.DefaultRequest;
 import com.zalopay.bankconnector.service.request.QueryStatusRequestData;
 import com.zalopay.bankconnector.service.response.DefaultResponse;
+import com.zalopay.bankconnector.web.rest.vm.ActionResult;
+import com.zalopay.bankconnector.web.rest.vm.request.InvokePaymentBankConnectorRequest;
+import com.zalopay.bankconnector.web.rest.vm.response.InvokePaymentBankConnectorResponse;
 
 import zalopay.bankconnector.bank.converter.ZP2BankMessageConverter;
 import zalopay.bankconnector.constant.ApiParamsConst;
-import zalopay.bankconnector.entity.ActionResult;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorRequest;
-import zalopay.bankconnector.entity.connector.InvokePaymentBankConnectorResponse;
 import zalopay.bankconnector.enums.BankTransStatusEnum;
 import zalopay.bankconnector.enums.NextActionEnum;
 import zalopay.bankconnector.enums.ReturnCodeEnum;
 
 public class QueryStatusMessageConverter extends ZP2BankCoreMessageConverter {
-
-    private static QueryStatusMessageConverter INSTANCE = new QueryStatusMessageConverter();
-
-    private QueryStatusMessageConverter() {
-
-    }
-
-    public static ZP2BankMessageConverter getInstance() {
-        return INSTANCE;
-    }
 
     @Override
     protected void convertAdditionalRequestInfos(InvokePaymentBankConnectorRequest source, DefaultRequest data, ActionResult actionResult) {
